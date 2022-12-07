@@ -13,7 +13,7 @@ const Home = () => {
 	const enterprise_code: number = import.meta.env.VITE_ENTERPRISE_CODE;
 
 	const [menuItems, setMenuItems] = useState<IMenuItem[]>([]);
-	const [isShown, setIsShown] = useState<boolean>(false);
+	const [isShown, setIsShown] = useState<boolean>(true);
 
 	useEffect(() => {
 		async function getMenuItems() {

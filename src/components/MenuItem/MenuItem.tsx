@@ -47,20 +47,22 @@ const MenuItem = ({ idProduct, languageName, sellPrice, isShown }: IProps) => {
 	}, []);
 
 	return (
-		<div className="item__">
+		<div className="item">
 			<h3 className="item__title">
 				{idProduct}: {languageName}
 			</h3>
-			{isShown === true && (
+			{isShown && (
 				<div className="item__allergens">
 					{allergens.map((allergen) => (
-						<p key={allergen.allergenId} className="item__" allergen>
+						<p key={allergen.allergenId} className="item__allergen">
 							{allergen.name}&nbsp;
 						</p>
 					))}
 				</div>
 			)}
-			<p className="item__price">Preu: {sellPrice}</p>
+			<p className="item__price">
+				Preu: <strong>{sellPrice}€</strong>
+			</p>
 		</div>
 	);
 };
