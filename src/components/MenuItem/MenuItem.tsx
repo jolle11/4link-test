@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
-
 import axios from "axios";
-
+// INTERFACES
 import { IMenuItem, IAllergen } from "../../ts";
-
-import "./MenuItem.scss";
-
 interface IProps {
 	idProduct: string;
 	languageName: string;
 	sellPrice: number;
 	isShown: boolean;
 }
+// STYLE
+import "./MenuItem.scss";
 
 const MenuItem = ({ idProduct, languageName, sellPrice, isShown }: IProps) => {
 	const url: string = import.meta.env.VITE_API_URL;
 	const enterprise_id: number = import.meta.env.VITE_ENTERPRISE_ID;
+
 	const [allergens, setAllergens] = useState<IAllergen[]>([]);
 
+	// API CALL TO GET THE ALLERGENS IN EACH MENU ITEM
 	useEffect(() => {
 		async function getMenuItems() {
 			try {
@@ -29,9 +29,7 @@ const MenuItem = ({ idProduct, languageName, sellPrice, isShown }: IProps) => {
 						},
 					},
 				);
-
 				let items = Object.values(data);
-
 				setAllergens(items[0]);
 			} catch (error) {
 				if (axios.isAxiosError(error)) {

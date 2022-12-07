@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+// INTERFACES
 import { IMenuItem } from "../../ts";
-
+// COMPONENTS
 import { AllergyButton, MenuItem } from "../../components";
 // STYLE
 import "./Home.scss";
@@ -15,6 +15,7 @@ const Home = () => {
 	const [menuItems, setMenuItems] = useState<IMenuItem[]>([]);
 	const [isShown, setIsShown] = useState<boolean>(true);
 
+	// API CALL TO GET THE ALLERGENS IN EACH MENU ITEM
 	useEffect(() => {
 		async function getMenuItems() {
 			try {
@@ -26,9 +27,7 @@ const Home = () => {
 						},
 					},
 				);
-
 				let items = Object.values(data);
-
 				setMenuItems(items[0]);
 			} catch (error) {
 				if (axios.isAxiosError(error)) {
